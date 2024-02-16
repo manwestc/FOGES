@@ -1,0 +1,37 @@
+version: "2"
+services:
+  helio-rest:
+    image: acimmino/helio-rest:latest
+    volumes:
+      - type: volume
+        source: helio-db
+        target: /helio/app
+        volume: {}
+      - ./default-components.json:/app/default-components.json
+    ports:
+      - 4567:4567
+
+  frontend:
+    image: emiliocrespoperan/helio-frontend:latest
+    depends_on:
+      - helio-rest
+    ports:
+      - 4201:80
+    environment:
+      - HELIO_REST_HOST=http://localhost:4567
+      - HELIO_MODE=PLAYGROUND
+
+  graphdb:
+    image: khaller/graphdb-free:10.0.0
+    environment:
+      GDB_JAVA_OPTS: >-
+        -Dgraphdb.home=/opt/graphdb/home
+    volumes:
+      - ./config.ttl:/opt/graphdb/home/data/repositories/data-cloud/config.ttl
+      - ./graphdb-data:/opt/graphdb/home
+    ports:
+      - 7200:7200
+
+volumes:
+  helio-db:
+    name: helio-db
