@@ -1,5 +1,5 @@
 [![License](https://img.shields.io/badge/license-Apache%202.0-blue)](https://github.com/manwestc/FOGES/blob/main/LICENSE)
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.10620393.svg)](https://doi.org/10.5281/zenodo.10620393)
+[![DOI](https://zenodo.org/badge/758401776.svg)](https://zenodo.org/doi/10.5281/zenodo.10669668)
 
 # FOGES
 
